@@ -32,6 +32,14 @@
       setInterval(goTimer, 10);
     });
 
+    //時、分、秒、それぞれで数字が1桁だったときに頭に0を付け足す処理
+    var addZero = function(value) {
+      if (value < 10) {
+        value = '0' + value;
+      }
+      return value;
+    }
+
     var goTimer = function() {
       var now = new Date();
 
@@ -47,6 +55,10 @@
       //60秒や60分を超えたら秒数や分数を0に戻す処理
       seconds = seconds - minutes * 60;
       minutes = minutes - hours * 60;
+
+      hours = addZero(hours);
+      minutes = addZero(minutes);
+      seconds = addZero(seconds);
 
       //ボタンを押してからの経過時間を表示する
       document.getElementById('timer').innerHTML = hours + ':' + minutes +  ':' + seconds;
