@@ -34,8 +34,14 @@
 
     var goTimer = function() {
       var now = new Date();
-      //1970年1月1日00:00:00UTCからの経過ミリ秒数を表示する
-      document.getElementById('timer').innerHTML = now.getTime() - start.getTime();
+
+      //現在の時間-ボタンを押した時間=経過時間
+      var milli = now.getTime() - start.getTime();
+      //そのままだとミリ秒数で見辛いので1000で割る。小数点以下はいらないのでMath.floorで切り捨てる
+      var seconds = Math.floor(milli / 1000);
+
+      //ボタンを押してからの経過時間を表示する
+      document.getElementById('timer').innerHTML = seconds;
     }
   </script>
 </body>
