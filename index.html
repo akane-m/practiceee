@@ -30,6 +30,13 @@
       start = new Date();
       //setInterval関数で10ミリ秒ごとにgoTimerを実行する
       setInterval(goTimer, 10);
+
+      //ボタンをSTOPボタンに変える処理
+      //id名 start_stopのSTARTをSTOPに変更
+      this.innerHTML = 'STOP';
+      //removeとaddを使ってボタンの色を変更
+      this.classList.remove('btn-primary');
+      this.classList.add('btn-danger');
     });
 
     //時、分、秒、それぞれで数字が1桁だったときに頭に0を付け足す処理
