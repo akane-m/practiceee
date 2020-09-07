@@ -22,5 +22,17 @@
     </div>
 
   </div>
+
+  <script>
+    var now = new Date();
+    var seconds = now.getSeconds(); //秒を取得
+
+    if (seconds < 10) {
+      seconds = '0' + seconds;
+    }
+    
+    //getElementByIdでid名timerの要素を取得して、要素の中を変数secondsに書き換える
+    document.getElementById('timer').innerHTML = seconds;
+  </script>
 </body>
 </html>
