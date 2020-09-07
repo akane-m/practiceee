@@ -25,14 +25,24 @@
 
   <script>
     var now = new Date();
-    var seconds = now.getSeconds(); //秒を取得
+    var seconds = now.getSeconds(); //秒数を取得
 
     if (seconds < 10) {
       seconds = '0' + seconds;
     }
-    
-    //getElementByIdでid名timerの要素を取得して、要素の中を変数secondsに書き換える
-    document.getElementById('timer').innerHTML = seconds;
+
+    var minutes = now.getMinutes(); //分数を取得
+    if (minutes < 10) {
+      minutes = '0' + minutes;
+    }
+
+    var hours = now.getHours(); //時を取得
+    if (hours < 10 ) {
+      hours = '0' + hours;
+    }
+
+    //getElementByIdでid名timerの要素を取得して、要素の中の時間を書き換える
+    document.getElementById('timer').innerHTML = hours + ':' +minutes + ':' + seconds;
   </script>
 </body>
 </html>
