@@ -39,9 +39,17 @@
       var milli = now.getTime() - start.getTime();
       //そのままだとミリ秒数で見辛いので1000で割る。小数点以下はいらないのでMath.floorで切り捨てる
       var seconds = Math.floor(milli / 1000);
+      //分を表示
+      var minutes = Math.floor(seconds / 60);
+      //時を表示
+      var hours = Math.floor(minutes / 60);
+
+      //60秒や60分を超えたら秒数や分数を0に戻す処理
+      seconds = seconds - minutes * 60;
+      minutes = minutes - hours * 60;
 
       //ボタンを押してからの経過時間を表示する
-      document.getElementById('timer').innerHTML = seconds;
+      document.getElementById('timer').innerHTML = hours + ':' + minutes +  ':' + seconds;
     }
   </script>
 </body>
