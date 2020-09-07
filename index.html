@@ -25,18 +25,29 @@
 
   <script>
     var start; //グローバル変数
+    var timer_id;
 
     document.getElementById('start_stop').addEventListener('click', function() {
-      start = new Date();
-      //setInterval関数で10ミリ秒ごとにgoTimerを実行する
-      setInterval(goTimer, 10);
+      //if文を使用してボタンの中の文字によって処理を分ける
+      if (this.innerHTML == 'START') {
+        start = new Date();
+        //setInterval関数で10ミリ秒ごとにgoTimerを実行する
+        timer_id = setInterval(goTimer, 10);
 
-      //ボタンをSTOPボタンに変える処理
-      //id名 start_stopのSTARTをSTOPに変更
-      this.innerHTML = 'STOP';
-      //removeとaddを使ってボタンの色を変更
-      this.classList.remove('btn-primary');
-      this.classList.add('btn-danger');
+        //ボタンをSTOPボタンに変える処理
+        //id名 start_stopのSTARTをSTOPに変更
+        this.innerHTML = 'STOP';
+        //removeとaddを使ってボタンの色を変更
+        this.classList.remove('btn-primary');
+        this.classList.add('btn-danger');
+      } else {
+        //タイマーを止める(時間を止める)
+        clearInterval(timer_id);
+        //STARTボタンに戻す
+        this.innerHTML = 'START';
+        this.classList.remove('btn-danger');
+        this.classList.add('btn-primary');
+      }
     });
 
     //時、分、秒、それぞれで数字が1桁だったときに頭に0を付け足す処理
