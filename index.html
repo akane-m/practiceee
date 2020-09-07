@@ -24,22 +24,24 @@
   </div>
 
   <script>
+    // 数字が1桁の時に頭に0を追加する
+    var addZero = function(value) {
+      if (value < 10) {
+      value = '0' + value;
+      }
+      return value;
+    }
+
     var now = new Date();
     var seconds = now.getSeconds(); //秒数を取得
-
-    if (seconds < 10) {
-      seconds = '0' + seconds;
-    }
+    seconds = addZero(seconds);
+    
 
     var minutes = now.getMinutes(); //分数を取得
-    if (minutes < 10) {
-      minutes = '0' + minutes;
-    }
+    minutes = addZero(minutes);
 
     var hours = now.getHours(); //時を取得
-    if (hours < 10 ) {
-      hours = '0' + hours;
-    }
+    hours = addZero(hours);
 
     //getElementByIdでid名timerの要素を取得して、要素の中の時間を書き換える
     document.getElementById('timer').innerHTML = hours + ':' +minutes + ':' + seconds;
